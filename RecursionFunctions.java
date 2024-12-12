@@ -30,10 +30,9 @@ public class RecursionFunctions {
     }
 
     private boolean isLettersEqual(char[] chars, int headIndex, int tailIndex) {
-        if (headIndex == tailIndex || headIndex + 1 == tailIndex) {
-            return chars[headIndex] == chars[tailIndex];
-        }
-        return chars[headIndex] == chars[tailIndex] && isLettersEqual(chars, headIndex + 1, tailIndex - 1);
+        if (headIndex == tailIndex || headIndex + 1 == tailIndex) return chars[headIndex] == chars[tailIndex];
+        if (chars[headIndex] != chars[tailIndex]) return false;
+        return isLettersEqual(chars, headIndex + 1, tailIndex - 1);
     }
 }
 
