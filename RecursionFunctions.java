@@ -52,11 +52,9 @@ public class RecursionFunctions {
     }
 
     private void printValuesWithOddIndexes(List<Integer> list, int index) {
-        if (index == list.size()) return;
-        if (index % 2 == 0) {
-            System.out.println(list.get(index));
-        }
-        printValuesWithOddIndexes(list, index + 1);
+        if (index >= list.size()) return;
+        System.out.println(list.get(index));
+        printValuesWithOddIndexes(list, index + 2);
     }
 }
 
