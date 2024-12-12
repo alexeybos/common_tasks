@@ -1,3 +1,5 @@
+import org.skillsmart.lesson4.Stack;
+
 public class RecursionFunctions {
 
     public long power(long base, long pow) {
@@ -15,4 +17,24 @@ public class RecursionFunctions {
         return number % 10 + digitSum(remainingDigits);
     }
 
+    public int listLength(Stack<Integer> list) {
+        if (list.pop() == null) {
+            return 0;
+        }
+        return 1 + listLength(list);
+    }
+
+    public boolean isPalindrome(String str) {
+        char[] chars = str.replaceAll("[^a-zA-Zа-яА-ЯЁё]", "").toLowerCase().toCharArray();
+        return isLettersEqual(chars, 0, chars.length - 1);
+    }
+
+    private boolean isLettersEqual(char[] chars, int headIndex, int tailIndex) {
+        if (headIndex == tailIndex || headIndex + 1 == tailIndex) {
+            return chars[headIndex] == chars[tailIndex];
+        }
+        return chars[headIndex] == chars[tailIndex] && isLettersEqual(chars, headIndex + 1, tailIndex - 1);
+    }
 }
+
+
