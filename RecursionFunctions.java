@@ -34,6 +34,30 @@ public class RecursionFunctions {
         if (chars[headIndex] != chars[tailIndex]) return false;
         return isLettersEqual(chars, headIndex + 1, tailIndex - 1);
     }
+	
+	public void printOddValues(List<Integer> list) {
+        printOddValues(list, 0);
+    }
+
+    private void printOddValues(List<Integer> list, int index) {
+        if (index == list.size()) return;
+        if (list.get(index) % 2 == 0) {
+            System.out.println(list.get(index));
+        }
+        printOddValues(list, index + 1);
+    }
+
+    public void printValuesWithOddIndexes(List<Integer> list) {
+        printValuesWithOddIndexes(list, 0);
+    }
+
+    private void printValuesWithOddIndexes(List<Integer> list, int index) {
+        if (index == list.size()) return;
+        if (index % 2 == 0) {
+            System.out.println(list.get(index));
+        }
+        printValuesWithOddIndexes(list, index + 1);
+    }
 }
 
 
