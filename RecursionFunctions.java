@@ -38,7 +38,7 @@ public class RecursionFunctions {
         return isLettersEqual(chars, headIndex + 1, tailIndex - 1);
     }
 	
-	public void printOddValues(List<Integer> list) {
+    public void printOddValues(List<Integer> list) {
         printOddValues(list, 0);
     }
 
@@ -60,7 +60,7 @@ public class RecursionFunctions {
         printValuesWithOddIndexes(list, index + 2);
     }
 	
-	public int findSecondMax(List<Integer> list) {
+    public int findSecondMax(List<Integer> list) {
         return findSecondMax(list, list.getFirst(), list.getFirst(), 1);
     }
 
