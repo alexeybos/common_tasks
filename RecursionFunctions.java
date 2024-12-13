@@ -75,7 +75,7 @@ public class RecursionFunctions {
         return findSecondMax(list, firstMax, secondMax, index + 1);
     }
 
-    public void findAllFiles(String dirName) {
+    /*public void findAllFiles(String dirName) {
         File startDir = new File(dirName);
         findAllFiles(startDir.listFiles(), 0);
     }
@@ -85,6 +85,18 @@ public class RecursionFunctions {
         if (files[index].isDirectory()) findAllFiles(files[index].listFiles(), 0);
         System.out.println(files[index].getName());
         findAllFiles(files, index + 1);
+    }*/
+	
+    public void findAllFiles(File dir) {
+        File[] files = dir.listFiles();
+        if (files == null) return;
+        for (File file : files) {
+            if (file.isDirectory()) {
+                findAllFiles(file);
+            } else {
+                System.out.println(file.getName());
+            }
+        }
     }
 
     public void generateParenthesisSequence(int cnt) {
