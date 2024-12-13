@@ -1,4 +1,7 @@
 import org.skillsmart.lesson4.Stack;
+import java.io.File;
+import java.util.List;
+
 
 public class RecursionFunctions {
 
@@ -55,6 +58,56 @@ public class RecursionFunctions {
         if (index >= list.size()) return;
         System.out.println(list.get(index));
         printValuesWithOddIndexes(list, index + 2);
+    }
+	
+	public int findSecondMax(List<Integer> list) {
+        return findSecondMax(list, list.getFirst(), list.getFirst(), 1);
+    }
+
+    private int findSecondMax(List<Integer> list, int firstMax, int secondMax, int index) {
+        if (index == list.size()) return secondMax;
+        secondMax = Math.max(secondMax, list.get(index));
+        if (secondMax > firstMax) {
+            int tempVal = firstMax;
+            firstMax = secondMax;
+            secondMax = tempVal;
+        }
+        return findSecondMax(list, firstMax, secondMax, index + 1);
+    }
+
+    public void findAllFiles(String dirName) {
+        File startDir = new File(dirName);
+        findAllFiles(startDir.listFiles(), 0);
+    }
+
+    private void findAllFiles(File[] files, int index) {
+        if (files == null || files.length == index) return;
+        if (files[index].isDirectory()) findAllFiles(files[index].listFiles(), 0);
+        System.out.println(files[index].getName());
+        findAllFiles(files, index + 1);
+    }
+
+    public void generateParenthesisSequence(int cnt) {
+        char[] br = new char[cnt*2];
+        generateParenthesisSequence(br, cnt, 0, 0);
+    }
+
+    private void generateParenthesisSequence(char[] brackets, int cnt, int index, int balance) {
+        if (index == cnt * 2) {
+            System.out.println(brackets);
+            return;
+        }
+        if (balance == cnt * 2 - index) {
+            brackets[index] = ')';
+            generateParenthesisSequence(brackets, cnt, index + 1, balance - 1);
+        } else {
+            brackets[index] = '(';
+            generateParenthesisSequence(brackets, cnt, index + 1, balance + 1);
+            if (balance > 1) {
+                brackets[index] = ')';
+                generateParenthesisSequence(brackets, cnt, index + 1, balance - 2);
+            }
+        }
     }
 }
 
