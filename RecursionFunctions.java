@@ -87,16 +87,18 @@ public class RecursionFunctions {
         findAllFiles(files, index + 1);
     }*/
 	
-    public void findAllFiles(File dir) {
+    public List<String> findAllFiles(File dir) {
         File[] files = dir.listFiles();
-        if (files == null) return;
+        List<String> result = new ArrayList<>();
+        if (files == null) return null;
         for (File file : files) {
             if (file.isDirectory()) {
-                findAllFiles(file);
+                result.addAll(findAllFiles(file));
             } else {
-                System.out.println(file.getName());
+                result.add(file.getName());
             }
         }
+        return result;
     }
 
     public void generateParenthesisSequence(int cnt) {
