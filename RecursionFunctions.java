@@ -87,15 +87,15 @@ public class RecursionFunctions {
         findAllFiles(files, index + 1);
     }*/
 	
-    public List<String> findAllFiles(File dir) {
+    public List<File> findAllFiles(File dir) {
         File[] files = dir.listFiles();
-        List<String> result = new ArrayList<>();
+        List<File> result = new ArrayList<>();
         if (files == null) return null;
         for (File file : files) {
             if (file.isDirectory()) {
                 result.addAll(findAllFiles(file));
             } else {
-                result.add(file.getName());
+                result.add(file);
             }
         }
         return result;
